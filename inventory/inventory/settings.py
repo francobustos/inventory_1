@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6029c3cbae028f0fe1e8ccc96151bbf707137704
     'inventory_app',
 ]
 
@@ -56,7 +60,11 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+<<<<<<< HEAD
 			'templates/',
+=======
+			'./templates/inventory_app',		
+>>>>>>> 6029c3cbae028f0fe1e8ccc96151bbf707137704
 		],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -119,5 +127,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 STATIC_URL = '/static/'
