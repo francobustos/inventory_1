@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     'inventory_app',
 ]
 
@@ -57,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-			'templates/',		
+			'templates/',
 		],
         'APP_DIRS': True,
         'OPTIONS': {
