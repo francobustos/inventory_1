@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="">
+      <form method="post">
+        {% csrf_token %}
+        <div class="">
+          <label>Usuario</label>
+          <input type="text" placeholder="Usuario" name="username">
+        </div>
+        <div class="">
+          <label>Contraseña</label>
+          <input type="password" placeholder="Contraseña" name="password">
+        </div>
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+    </div>
+
+
+  </body>
+</html>
