@@ -1,6 +1,18 @@
 h1{
-	font-size:20px;
+	text-align: center;
+	font-size:30px;
+	font-family: Arial, Geneva, Helvetica, sans-serif;
 }
+
 body{
- 	background-color: red;	
+ 	background-color: white;
+}
+
+h3{
+	font-family: Arial, Geneva, Helvetica, sans-serif;
+
+}
+a{
+	font-family: Arial, Geneva, Helvetica, sans-serif;
+
 }
