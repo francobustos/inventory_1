@@ -51,14 +51,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'inventory.urls'
+ROOT_URLCONF = 'inventory_app.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
 			'templates/',
-			'./templates/inventory_app',		
+			'./templates/inventory_app',
 		],
         'APP_DIRS': True,
         'OPTIONS': {

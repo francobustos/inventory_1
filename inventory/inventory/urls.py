@@ -21,7 +21,7 @@ from .import views
 
 urlpatterns = [
 	url(r'^jet/', include('jet.urls', 'jet')),
+    url(r"^admin/.", incluide(inventory_app)),
     url(r'^admin/', admin.site.urls),
-	url(r'^home/$', views.home),
 	#path('',login, {'template_name':'index.html'}, name = 'login')
 ]
