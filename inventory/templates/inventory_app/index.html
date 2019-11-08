@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static './inventory_app/style.css' %}" />
+	  {% load static %}
+	  <link rel="stylesheet" type="text/css" href="{% static './inventory_app/style.css' %}" />
     <meta charset="utf-8">
-    <title>Inventory</title>
   </head>
   <body>
-    <h1>Este es el inventorio</h1>
+    <h1>{% block title %}Este es el inventario{% endblock %}</h1>
+    {% block content %}
+      {% for a in area %}
+        <h3>Area: {{a.nombre}}</h3><br/>
+        {% for c in container %}
+          {% if a == c.area_de_origen %}
+            <a>Container: {{c.nombre}}</a><br/><br/>
+            {% for o in objeto %}
+              {% if c == o.container_de_origen %}
+                <a>Objeto: {{o.nombre}}</a><br/><br/>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endblock %}
   </body>
 </html>
