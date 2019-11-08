@@ -13,12 +13,12 @@
         {% for c in container %}
           {% if a == c.area_de_origen %}
             <a>Container: {{c.nombre}}</a><br/><br/>
+            {% for o in objeto %}
+              {% if c == o.container_de_origen %}
+                <a>Objeto: {{o.nombre}}</a><br/><br/>
+              {% endif %}
+            {% endfor %}
           {% endif %}
-          {% for o in objeto %}
-            {% if c == o.conteiner_de_origen %}
-              <a>Objeto: {{o.nombre}}</a><br/><br/>
-            {% endif %}
-          {% endfor %}
         {% endfor %}
       {% endfor %}
     {% endblock %}
