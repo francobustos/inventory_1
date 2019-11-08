@@ -43,9 +43,9 @@ class Objeto(models.Model):
     estado = models.CharField(max_length=1, choices=estado, default="")
     caracteristicas = models.TextField()
     observaciones = models.TextField()
-    conteiner_de_origen = models.ForeignKey(Container, on_delete=models.CASCADE)
+    container_de_origen = models.ForeignKey(Container, on_delete=models.CASCADE)
 
-    def __Str__(self):
+    def __str__(self):
         return self.nombre
 
     class Meta:
