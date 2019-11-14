@@ -16,9 +16,18 @@
     <center>
     <div class="middle">
           <div id="login">
+            {% for message in messages %}
 
-            <form action="javascript:void(0);" method="get">
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
 
+                        {{ message }}
+
+                    </div>
+            {% endfor %}
+
+            <form method="POST">
+              {% csrf_token %}
               <fieldset class="clearfix">
 
                 <span class="fa fa-user-circle-o" aria-hidden="true">  </span>  <input name="username" type="text"  Placeholder="Usuario" required> <!-- JS because of IE support; better: placeholder="Username" -->
@@ -33,6 +42,8 @@
             </form>
 
             <div class="clearfix"></div>
+
+
 
           </div> <!-- end login -->
           <div class="logo">
