@@ -53,7 +53,7 @@ class Prestamo(models.Model):
     fecha_de_prestamo = models.DateTimeField()
     devuelto = models.BooleanField()
     area_de_origen = models.ForeignKey(Area, on_delete=models.CASCADE)
-    objeto = models.OneToOneField(Objeto, on_delete=models.CASCADE)
+    objeto = models.OneToOneField(Objeto, on_delete=models.CASCADE,default=0)
 
     def __str__(self):
         return self.fecha_de_prestamo
