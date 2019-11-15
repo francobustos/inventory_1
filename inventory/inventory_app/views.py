@@ -7,3 +7,14 @@ def post_list(request):
     container = Container.objects.all()
     objeto = Objeto.objects.all()
     return render(request, 'index.html', {'area':area, 'container':container, 'objeto':objeto})
+
+def area(request):
+	area = Area.objects.all()
+	container = Container.objects.all()
+	return render(request, 'areas.html', {'area':area, 'container':container })
+
+def create(request):
+	area = Area.objects.all()
+	container = Container.objects.all()
+	objeto = Objeto.objects.all()
+	return render(request, 'crear.html', {'area':area, 'container':container, 'objeto':objeto})
