@@ -8,6 +8,5 @@ urlpatterns = [
     url(r"^admin/",admin.site.urls),
     path("",views.my_login, name = "login"),
     path("index/", views.post_list, name = "post_list"),
-    path("", views.post_list, name = "post_list"),
     path('objetos/', views.objeto, name = "objeto"),
 ]
