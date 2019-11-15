@@ -11,7 +11,6 @@ def post_list(request):
     objeto = Objeto.objects.all()
     return render(request, 'index.html', {'area':area, 'container':container, 'objeto':objeto})
 
-<<<<<<< HEAD
 def my_login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -24,8 +23,7 @@ def my_login(request):
             return redirect('login')
     else:
         return render(request, 'login.html')
-=======
+
 def objeto(request):
     objeto = Objeto.objects.all()
     return render(request, 'objetos.html',{'objeto':objeto})
->>>>>>> feature
