@@ -27,3 +27,8 @@ def my_login(request):
 def objeto(request):
     objeto = Objeto.objects.all()
     return render(request, 'objetos.html',{'objeto':objeto})
+
+def area(request):
+	area = Area.objects.all()
+	container = Container.objects.all()
+	return render(request, 'areas.html', {'area':area, 'container':container })

@@ -9,4 +9,5 @@ urlpatterns = [
     path("",views.my_login, name = "login"),
     path("index/", views.post_list, name = "post_list"),
     path('objetos/', views.objeto, name = "objeto"),
+	path("area/", views.area, name = "area"),
 ]
