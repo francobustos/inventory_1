@@ -1,5 +1,5 @@
 from django import forms
-from .models import Container,Area
+from .models import Container,Area, Objeto
 
 class ContainerForm(forms.ModelForm):
     class Meta:
@@ -10,3 +10,8 @@ class AreaForm(forms.ModelForm):
 	class Meta:
 		model = Area
 		fields = ['nombre']
+
+class ObjetoForm(forms.ModelForm):
+	class Meta:
+		model = Objeto
+		fields = ['ID_profe','nombre','estado','caracteristicas']
