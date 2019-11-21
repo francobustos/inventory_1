@@ -6,7 +6,7 @@ from django.contrib import messages
 from .forms import ContainerForm, AreaForm, ObjetoForm
 
 
-def post_list(request):
+def Home(request):
     area = Area.objects.all()
     container = Container.objects.all()
     objeto = Objeto.objects.all()
@@ -18,7 +18,7 @@ def my_login(request):
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            return redirect('post_list')
+            return redirect('home')
         else:
             messages.error(request,'Usuario o contraseña incorrecta')
             return redirect('login')
@@ -30,7 +30,7 @@ def crear_container(request):
         container_form = ContainerForm(request.POST) #Crea una variable con la peticion que le envia la pagina y lo almacena como un formulario
         if container_form.is_valid(): #Verifica si todos los campos estan bien con respecto a la base de datos
             container_form.save() #Guarda el formulario en la base de datos
-            return redirect('post_list') #Redirecciona al index
+            return redirect('home') #Redirecciona al index
     if request.method == 'GET': #Para ver si la peticion de la pagina quiere traer algo del servidor a la pagina
         container_form = ContainerForm() #Crea un formulario vacio
     return render(request, 'edicion.html', {'form':container_form,'titulo':"Crear container"}) #Renderiza la pagina edicion.html y le envia un formulario y un string
@@ -45,7 +45,7 @@ def editar_container(request, id):
         container_form = ContainerForm(request.POST, instance = container)
         if container_form.is_valid():
             container_form.save()
-        return redirect('post_list')
+        return redirect('home')
     return render(request, 'edicion.html', {'form': container_form, 'titulo': 'Editar Container'})
 
 
@@ -54,7 +54,7 @@ def crear_area(request):
         area_form = AreaForm(request.POST)
         if area_form.is_valid():
             area_form.save()
-            return redirect('post_list')
+            return redirect('home')
     if request.method == 'GET':
         area_form = AreaForm()
     return render(request, 'edicion.html', {'form':area_form,'titulo':"Crear Area"})
@@ -68,7 +68,7 @@ def editar_area(request, id):
         area_form = AreaForm(request.POST, instance = area)
         if area_form.is_valid():
             area_form.save()
-        return redirect('post_list')
+        return redirect('home')
     return render(request, 'edicion.html', {'form': area_form, 'titulo': 'Editar Area'})
 
 def crear_objeto(request):
@@ -76,7 +76,7 @@ def crear_objeto(request):
         objeto_form = ObjetoForm(request.POST)
         if objeto_form.is_valid():
             objeto_form.save()
-            return redirect('post_list')
+            return redirect('home')
     if request.method == 'GET':
         objeto_form = ObjetoForm()
     return render(request, 'edicion.html', {'form':objeto_form,'titulo':"Crear Objeto"})
@@ -90,5 +90,5 @@ def editar_objeto(request, id):
         objeto_form = ObjetoForm(request.POST, instance = objeto)
         if objeto_form.is_valid():
             objeto_form.save()
-        return redirect('post_list')
+        return redirect('home')
     return render(request, 'edicion.html', {'form': objeto_form, 'titulo': 'Editar Objeto'})
