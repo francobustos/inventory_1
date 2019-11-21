@@ -34,6 +34,10 @@ class Objeto(models.Model):
     )
     estado = models.CharField(max_length=1, choices=estado, default="")
     caracteristicas = models.TextField()
+
+
+
+
     observaciones = models.TextField()
     container_de_origen = models.ForeignKey(Container, on_delete=models.CASCADE)
 
