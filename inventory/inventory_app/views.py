@@ -25,11 +25,6 @@ def my_login(request):
     else:
         return render(request, 'login.html')
 
-def objeto(request):
-    objeto = Objeto.objects.all()
-    return render(request, 'objetos.html',{'objeto':objeto})
-
-
 def crear_container(request):
     if request.method == 'POST':
         container_form = ContainerForm(request.POST)
