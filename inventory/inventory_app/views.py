@@ -31,6 +31,19 @@ def crear_container(request):
         if container_form.is_valid(): #Verifica si todos los campos estan bien con respecto a la base de datos
             container_form.save() #Guarda el formulario en la base de datos
             return redirect('post_list') #Redirecciona al index
-    else: #Para ver si la peticion de la pagina quiere traer algo del servidor a la pagina
+    if request.method == 'GET': #Para ver si la peticion de la pagina quiere traer algo del servidor a la pagina
         container_form = ContainerForm() #Crea un formulario vacio
     return render(request, 'edicion.html', {'form':container_form,'titulo':"Crear container"}) #Renderiza la pagina edicion.html y le envia un formulario y un string
+
+
+
+def editar_container(request, id):
+    container = Container.objects.get(id = id)
+    if request.method == 'GET':
+        container_form = ContainerForm(instance = container)
+    if request.method == 'POST':
+        container_form = ContainerForm(request.POST, instance = container)
+        if container_form.is_valid():
+            container_form.save()
+        return redirect('post_list')
+    return render(request, 'edicion.html', {'form': container_form, 'titulo': 'Editar Container'})
