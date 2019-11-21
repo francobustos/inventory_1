@@ -9,4 +9,5 @@ urlpatterns = [
     path("",views.my_login, name = "login"),
     path("index/", views.post_list, name = "post_list"),
     path('crear_container/',views.crear_container, name = "crear_container"),
+    path('editar_container/<int:id>',views.editar_container, name = 'editar_container')
 ]
