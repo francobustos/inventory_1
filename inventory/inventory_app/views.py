@@ -3,7 +3,7 @@ from inventory_app.models import *
 from django.utils import timezone
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .forms import ContainerForm
+from .forms import ContainerForm, AreaForm
 
 
 def post_list(request):
@@ -47,3 +47,26 @@ def editar_container(request, id):
             container_form.save()
         return redirect('post_list')
     return render(request, 'edicion.html', {'form': container_form, 'titulo': 'Editar Container'})
+
+
+def crear_area(request):
+    if request.method == 'POST':
+        area_form = AreaForm(request.POST)
+        if area_form.is_valid():
+            area_form.save()
+            return redirect('post_list')
+    if request.method == 'GET':
+        area_form = AreaForm()
+    return render(request, 'edicion.html', {'form':area_form,'titulo':"Crear Area"})
+
+
+def editar_area(request, id):
+    area = Area.objects.get(id = id)
+    if request.method == 'GET':
+        area_form = AreaForm(instance = area)
+    if request.method == 'POST':
+        area_form = AreaForm(request.POST, instance = area)
+        if area_form.is_valid():
+            area_form.save()
+        return redirect('post_list')
+    return render(request, 'edicion.html', {'form': area_form, 'titulo': 'Editar Area'})
