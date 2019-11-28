@@ -15,7 +15,13 @@ def Home(request):
     area = Area.objects.all()
     container = Container.objects.all()
     objeto = Objeto.objects.all()
-    return render(request, 'index.html', {'area':area, 'container':container, 'objeto':objeto})
+    return render(request, 'home.html', {'area':area, 'container':container, 'objeto':objeto})
+
+def informacion(request):
+    area = Area.objects.all()
+    container = Container.objects.all()
+    objeto = Objeto.objects.all()
+    return render(request, 'informacion.html',{'area':area, 'container':container, 'objeto':objeto})
 
 def my_login(request):
     if request.method == 'POST':
@@ -107,3 +113,7 @@ def editar_objeto(request, id):
             objeto_form.save()
         return redirect('home')
     return render(request, 'edicion.html', {'form': objeto_form, 'titulo': 'Editar Objeto'})
+
+def post_list(request):
+    lista = Objetos.objects.all()
+    return render(request,'info.html',{'lista':lista})

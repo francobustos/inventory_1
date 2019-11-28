@@ -14,4 +14,8 @@ class AreaForm(forms.ModelForm):
 class ObjetoForm(forms.ModelForm):
 	class Meta:
 		model = Objeto
-		fields = ['ID_profe','nombre','estado','caracteristicas']
+		fields = ['ID_profe','nombre','estado','caracteristicas','observaciones','container_de_origen']
+
+class LoginForms(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput())
