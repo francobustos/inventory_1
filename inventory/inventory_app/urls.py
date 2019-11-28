@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.conf.urls import url
 from inventory_app import views
-from django.urls import path,include
+from django.urls import path, include
 
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),

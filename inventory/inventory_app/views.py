@@ -5,8 +5,12 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .forms import ContainerForm, AreaForm, ObjetoForm
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+from django.shortcuts import render_to_response
+from inventory.forms import LoginForms
 
-#@login_required(login_url="http://127.0.0.1:8000")
+
+@login_required(login_url="http://127.0.0.1:8000")
 def Home(request):
     area = Area.objects.all()
     container = Container.objects.all()
@@ -15,18 +19,26 @@ def Home(request):
 
 def my_login(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            return redirect('home')
-        else:
-            messages.error(request,'Usuario o contraseña incorrecta')
-            return redirect('login')
+        form = LoginForms(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('home')
+                else:
+                    messages.error(request,'Tu usuario está inactivo')
+            else:
+                messages.error(request,'Usuario o contraseña incorrecta')
+                return redirect('login')
     else:
-        return render(request, 'login.html')
+        form = LoginForms()
+    return render(request, 'login.html')
 
-#@login_required(login_url="http://127.0.0.1:8000")
+
+@login_required(login_url="http://127.0.0.1:8000")
 def crear_container(request):
     if request.method == 'POST': #Para ver si la peticion de la pagina quiere enviar algo al servidor
         container_form = ContainerForm(request.POST) #Crea una variable con la peticion que le envia la pagina y lo almacena como un formulario
@@ -38,7 +50,7 @@ def crear_container(request):
     return render(request, 'edicion.html', {'form':container_form,'titulo':"Crear container"}) #Renderiza la pagina edicion.html y le envia un formulario y un string
 
 
-#@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="http://127.0.0.1:8000")
 def editar_container(request, id):
     container = Container.objects.get(id = id)
     if request.method == 'GET':
@@ -50,7 +62,7 @@ def editar_container(request, id):
         return redirect('home')
     return render(request, 'edicion.html', {'form': container_form, 'titulo': 'Editar Container'})
 
-#@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="http://127.0.0.1:8000")
 def crear_area(request):
     if request.method == 'POST':
         area_form = AreaForm(request.POST)
@@ -61,7 +73,7 @@ def crear_area(request):
         area_form = AreaForm()
     return render(request, 'edicion.html', {'form':area_form,'titulo':"Crear Area"})
 
-#@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="http://127.0.0.1:8000")
 def editar_area(request, id):
     area = Area.objects.get(id = id)
     if request.method == 'GET':
@@ -73,7 +85,7 @@ def editar_area(request, id):
         return redirect('home')
     return render(request, 'edicion.html', {'form': area_form, 'titulo': 'Editar Area'})
 
-#@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="http://127.0.0.1:8000")
 def crear_objeto(request):
     if request.method == 'POST':
         objeto_form = ObjetoForm(request.POST)
@@ -84,7 +96,7 @@ def crear_objeto(request):
         objeto_form = ObjetoForm()
     return render(request, 'edicion.html', {'form':objeto_form,'titulo':"Crear Objeto"})
 
-#@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="http://127.0.0.1:8000")
 def editar_objeto(request, id):
     objeto = objeto.objects.get(id = id)
     if request.method == 'GET':
