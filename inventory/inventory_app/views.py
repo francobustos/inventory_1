@@ -69,7 +69,7 @@ def editar_container(request, id):
         return redirect('home')
     return render(request, 'edicion.html', {'form': container_form, 'titulo': 'Editar Container'})
 
-@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="login")
 def crear_area(request):
     if request.method == 'POST':
         area_form = AreaForm(request.POST)
@@ -80,7 +80,7 @@ def crear_area(request):
         area_form = AreaForm()
     return render(request, 'edicion.html', {'form':area_form,'titulo':"Crear Area"})
 
-@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="login")
 def editar_area(request, id):
     area = Area.objects.get(id = id)
     if request.method == 'GET':
@@ -92,7 +92,7 @@ def editar_area(request, id):
         return redirect('home')
     return render(request, 'edicion.html', {'form': area_form, 'titulo': 'Editar Area'})
 
-@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="login")
 def crear_objeto(request):
     if request.method == 'POST':
         objeto_form = ObjetoForm(request.POST)
@@ -103,7 +103,7 @@ def crear_objeto(request):
         objeto_form = ObjetoForm()
     return render(request, 'edicion.html', {'form':objeto_form,'titulo':"Crear Objeto"})
 
-@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="login")
 def editar_objeto(request, id):
     objeto = Objeto.objects.get(id = id)
     if request.method == 'GET':
@@ -131,5 +131,5 @@ def eliminar_objeto(request, id):
     return redirect('home')
 
 def post_list(request):
-    lista = Objetos.objects.all()
+    lista = Objeto.objects.all()
     return render(request,'info.html',{'lista':lista})

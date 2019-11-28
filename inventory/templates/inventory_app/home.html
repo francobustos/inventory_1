@@ -55,17 +55,25 @@
   {% block content %}
   <div id="lista">
     {% for area in areas %}
-      <h3>Area: {{area.nombre}}</h2>
+      <h2>Area: {{area.nombre}}</h2>
       <a href="{% url 'editar_area' area.id %}">Editar</a><br/>
       <a href="{% url 'eliminar_area' area.id %}" onclick="return confirmar()" >Eliminar</a><br/>
       {% for container in containers %}
         {% if area == container.area_de_origen %}
-          <h2>Container: {{container.nombre}}</h2>
+          {%if container.ID_profe%}
+            <h3>Container: {{container.nombre}}({{container.ID_profe}})</h3>
+          {%else%}
+            <h3>Container: {{container.nombre}}</h3>
+          {%endif%}
           <a href="{% url 'editar_container' container.id %}">Editar</a><br/>
           <a href="{% url 'eliminar_container' container.id %}" onclick="return confirmar()" >Eliminar</a><br/>
         {% for objeto in objetos %}
           {% if container == objeto.container_de_origen %}
-            <a>Objeto: {{objeto.nombre}}</a>
+            {%if objeto.ID_profe%}
+              <a>Objeto: {{objeto.nombre}}({{objeto.ID_profe}})</a>
+            {%else%}
+              <a>Objeto: {{objeto.nombre}}</a>
+            {%endif%}
             <a href="{% url 'editar_objeto' objeto.id %}">Editar</a><br/>
             <a href="{% url 'eliminar_objeto' objeto.id %}" onclick="return confirmar()" >Eliminar</a><br/>
           {% endif %}

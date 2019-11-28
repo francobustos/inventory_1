@@ -11,12 +11,12 @@ class Area(models.Model):
         verbose_name_plural = 'Areas'
 
 class Container(models.Model):
-    ID_profe = models.CharField(max_length=30)
+    ID_profe = models.CharField(max_length=30, blank = True)
     nombre = models.CharField(max_length=30)
     area_de_origen = models.ForeignKey(Area, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nombre
+        return "{0},{1},{2}".format(self.area_de_origen.nombre, self.nombre,self.ID_profe)
 
     class Meta:
         verbose_name = 'Container'
@@ -24,7 +24,7 @@ class Container(models.Model):
 
 
 class Objeto(models.Model):
-    ID_profe = models.CharField(max_length=30)
+    ID_profe = models.CharField(max_length=30, blank = True)
     nombre = models.CharField(max_length=30)
     estado = (
         ("N", "Nuevo"),
@@ -33,8 +33,8 @@ class Objeto(models.Model):
         ("R","Roto"),
     )
     estado = models.CharField(max_length=1, choices=estado, default="")
-    caracteristicas = models.TextField()
-    observaciones = models.TextField()
+    caracteristicas = models.TextField(blank = True, null = True)
+    observaciones = models.TextField(blank = True, null = True)
     container_de_origen = models.ForeignKey(Container, on_delete=models.CASCADE)
 
     def __str__(self):
