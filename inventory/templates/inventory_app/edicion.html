@@ -3,13 +3,16 @@
   <head>
     {% load static %}
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static './inventory_app/edicion.css' %}" />
     <title> {{titulo}} </title>
   </head>
   <body>
     <form method="POST">
+      <div class="div1">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">Enviar</button>
+      </div>
     </form>
   </body>
 </html>
