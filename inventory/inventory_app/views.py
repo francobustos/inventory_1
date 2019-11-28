@@ -7,16 +7,17 @@ from .forms import ContainerForm, AreaForm, ObjetoForm
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from inventory.forms import LoginForms
+from inventory_app.forms import LoginForms
 
 
-@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="login")
 def Home(request):
     area = Area.objects.all()
     container = Container.objects.all()
     objeto = Objeto.objects.all()
     return render(request, 'home.html', {'area':area, 'container':container, 'objeto':objeto})
 
+@login_required(login_url='login')
 def informacion(request):
     area = Area.objects.all()
     container = Container.objects.all()
@@ -44,7 +45,7 @@ def my_login(request):
     return render(request, 'login.html')
 
 
-@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="login")
 def crear_container(request):
     if request.method == 'POST': #Para ver si la peticion de la pagina quiere enviar algo al servidor
         container_form = ContainerForm(request.POST) #Crea una variable con la peticion que le envia la pagina y lo almacena como un formulario
@@ -56,7 +57,7 @@ def crear_container(request):
     return render(request, 'edicion.html', {'form':container_form,'titulo':"Crear container"}) #Renderiza la pagina edicion.html y le envia un formulario y un string
 
 
-@login_required(login_url="http://127.0.0.1:8000")
+@login_required(login_url="login")
 def editar_container(request, id):
     container = Container.objects.get(id = id)
     if request.method == 'GET':
