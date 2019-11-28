@@ -15,7 +15,7 @@ def Home(request):
     area = Area.objects.all()
     container = Container.objects.all()
     objeto = Objeto.objects.all()
-    return render(request, 'home.html', {'area':area, 'container':container, 'objeto':objeto})
+    return render(request, 'home.html', {'areas':area, 'containers':container, 'objetos':objeto})
 
 @login_required(login_url='login')
 def informacion(request):
@@ -105,7 +105,7 @@ def crear_objeto(request):
 
 @login_required(login_url="http://127.0.0.1:8000")
 def editar_objeto(request, id):
-    objeto = objeto.objects.get(id = id)
+    objeto = Objeto.objects.get(id = id)
     if request.method == 'GET':
         objeto_form = ObjetoForm(instance = objeto)
     if request.method == 'POST':
@@ -114,6 +114,21 @@ def editar_objeto(request, id):
             objeto_form.save()
         return redirect('home')
     return render(request, 'edicion.html', {'form': objeto_form, 'titulo': 'Editar Objeto'})
+
+def eliminar_area(request, id):
+    area = Area.objects.get(id = id)
+    area.delete()
+    return redirect('home')
+
+def eliminar_container(request, id):
+    container = Container.objects.get(id = id)
+    container.delete()
+    return redirect('home')
+
+def eliminar_objeto(request, id):
+    objeto = Objeto.objects.get(id = id)
+    objeto.delete()
+    return redirect('home')
 
 def post_list(request):
     lista = Objetos.objects.all()
