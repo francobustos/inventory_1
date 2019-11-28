@@ -94,4 +94,4 @@ def editar_objeto(request, id):
         if objeto_form.is_valid():
             objeto_form.save()
         return redirect('home')
-    return render(request, 'edicion.html', {'form': objeto_form, 'titulo': 'Editar Objeto'})
+    return render(request, 'edicion.html', {'form': objeto_form,'ID':'ID Objeto','nombre':'Nombre','estado':'Estado','caracteristicas':'Caracteristicas','titulo': 'Editar Objeto'})
