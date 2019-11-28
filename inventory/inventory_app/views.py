@@ -13,6 +13,12 @@ def Home(request):
     objeto = Objeto.objects.all()
     return render(request, 'home.html', {'area':area, 'container':container, 'objeto':objeto})
 
+def informacion(request):
+    area = Area.objects.all()
+    container = Container.objects.all()
+    objeto = Objeto.objects.all()
+    return render(request, 'informacion.html',{'area':area, 'container':container, 'objeto':objeto})
+
 def my_login(request):
     if request.method == 'POST':
         username = request.POST['username']
