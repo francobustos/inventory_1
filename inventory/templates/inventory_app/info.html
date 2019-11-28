@@ -57,6 +57,7 @@
             <th>Estado</th>
             <th>Caracteristicas</th>
             <th>Observaciones</th>
+            <th>Fecha de entrada</th>
             <th>Guardado en</th>
             <th>Habitacion</th>
           </tr>
@@ -81,6 +82,7 @@
               {%endif%}
               <td>{{objeto.caracteristicas}}</td>
               <td>{{objeto.observaciones}}</td>
+              <td>{{objeto.fecha_entrada}}</td>
               {%if objeto.container_de_origen.ID_profe%}
                 <td>{{objeto.container_de_origen.nombre}}({{objeto.container_de_origen.ID_profe}})</td>
               {%else%}

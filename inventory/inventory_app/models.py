@@ -1,4 +1,5 @@
 from django.db import models
+import time
 
 class Area(models.Model):
     nombre = models.CharField(max_length=30)
@@ -35,6 +36,7 @@ class Objeto(models.Model):
     estado = models.CharField(max_length=1, choices=estado, default="")
     caracteristicas = models.TextField(blank = True, null = True)
     observaciones = models.TextField(blank = True, null = True)
+    fecha_entrada = models.DateField(blank = True, null = True, default = (str(time.strftime("%m/%d/%y"))))
     container_de_origen = models.ForeignKey(Container, on_delete=models.CASCADE)
 
     def __str__(self):
