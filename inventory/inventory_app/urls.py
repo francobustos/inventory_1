@@ -14,4 +14,7 @@ urlpatterns = [
     path('editar_area/<int:id>',views.editar_area, name = 'editar_area'),
     path('crear_objeto/',views.crear_objeto, name = "crear_objeto"),
     path('editar_objeto/<int:id>',views.editar_objeto, name = 'editar_objeto'),
+    path('eliminar_area/<int:id>',views.eliminar_area , name = 'eliminar_area'),
+    path('eliminar_container/<int:id>',views.eliminar_container , name = 'eliminar_container'),
+    path('eliminar_objeto/<int:id>',views.eliminar_objeto , name = 'eliminar_objeto'),
 ]
