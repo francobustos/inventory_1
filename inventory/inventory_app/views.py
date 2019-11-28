@@ -92,3 +92,7 @@ def editar_objeto(request, id):
             objeto_form.save()
         return redirect('home')
     return render(request, 'edicion.html', {'form': objeto_form, 'titulo': 'Editar Objeto'})
+
+def post_list(request):
+    lista = Objetos.objects.all()
+    return render(request,'info.html',{'lista':lista})
