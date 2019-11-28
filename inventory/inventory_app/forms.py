@@ -14,4 +14,4 @@ class AreaForm(forms.ModelForm):
 class ObjetoForm(forms.ModelForm):
 	class Meta:
 		model = Objeto
-		fields = ['ID_profe','nombre','estado','caracteristicas']
+		fields = ['ID_profe','nombre','estado','caracteristicas','observaciones','container_de_origen']
