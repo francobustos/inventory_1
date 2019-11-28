@@ -7,7 +7,7 @@ urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path("admin/",admin.site.urls),
     path("",views.my_login, name = "login"),
-    path("index/", views.Home, name = "home"),
+    path("home/", views.Home, name = "home"),
     path('crear_container/',views.crear_container, name = "crear_container"),
     path('editar_container/<int:id>',views.editar_container, name = 'editar_container'),
     path('crear_area/',views.crear_area, name = "crear_area"),

@@ -6,12 +6,12 @@ from django.contrib import messages
 from .forms import ContainerForm, AreaForm, ObjetoForm
 from django.contrib.auth.decorators import login_required
 
-#login_required(login_url="login")
+#@login_required(login_url="login")
 def Home(request):
     area = Area.objects.all()
     container = Container.objects.all()
     objeto = Objeto.objects.all()
-    return render(request, 'index.html', {'area':area, 'container':container, 'objeto':objeto})
+    return render(request, 'home.html', {'area':area, 'container':container, 'objeto':objeto})
 
 def my_login(request):
     if request.method == 'POST':
@@ -94,12 +94,8 @@ def editar_objeto(request, id):
         if objeto_form.is_valid():
             objeto_form.save()
         return redirect('home')
-<<<<<<< HEAD
-    return render(request, 'edicion.html', {'form': objeto_form,'ID':'ID Objeto','nombre':'Nombre','estado':'Estado','caracteristicas':'Caracteristicas','titulo': 'Editar Objeto'})
-=======
     return render(request, 'edicion.html', {'form': objeto_form, 'titulo': 'Editar Objeto'})
 
 def post_list(request):
     lista = Objetos.objects.all()
     return render(request,'info.html',{'lista':lista})
->>>>>>> 7504b97a69d0aa2671c760e2199444b824052e46

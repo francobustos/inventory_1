@@ -4,14 +4,11 @@
     {% load static %}
     <meta charset="utf-8">
     <title> {{titulo}} </title>
-    <link rel="stylesheet" type="text/css" href="{% static './inventory_app/form.css' %}" />
   </head>
   <body>
-    <h1> {{titulo}} </h1>
     <form method="POST">
       {% csrf_token %}
-      {{ID}}
-      {{ form.ID_profe }}
+      {{ form.as_p }}
       <button type="submit">Enviar</button>
     </form>
   </body>
