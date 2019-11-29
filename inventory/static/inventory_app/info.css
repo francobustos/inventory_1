@@ -4,16 +4,23 @@
 
 .tabla {
   border-collapse: separate;
+<<<<<<< HEAD
+  margin-left: 1px;
+  margin-top: 1px;
+=======
   margin-top: 10px;
+>>>>>>> 48873de40b26a5be2063a416c4ee49ee3c44882a
   border: 1px;
   border-color: #000000;
+  width: 1366px;
 }
 
-
+#posicion{
+  width: 1366px;
+}
 
 table{
   text-align: center;
-
 }
 
 th, td{
