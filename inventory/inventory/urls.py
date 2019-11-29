@@ -20,8 +20,8 @@ from .import views
 
 
 urlpatterns = [
-	url(r'^jet/', include('jet.urls', 'jet')),
-    url(r"^admin/.", include(inventory_app)),
-    url(r'^admin/', admin.site.urls),
+	path('jet/', include('jet.urls', 'jet')),
+    path("admin/.", include(inventory_app)),
+    path('admin/', admin.site.urls),
 	#path('',login, {'template_name':'index.html'}, name = 'login')
 ]
