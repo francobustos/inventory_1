@@ -45,17 +45,3 @@ class Objeto(models.Model):
     class Meta:
         verbose_name = 'Objeto'
         verbose_name_plural = 'Objetos'
-
-
-class Prestamo(models.Model):
-    fecha_de_prestamo = models.DateTimeField()
-    devuelto = models.BooleanField()
-    area_de_origen = models.ForeignKey(Area, on_delete=models.CASCADE)
-    objeto = models.OneToOneField(Objeto, on_delete=models.CASCADE,default=0)
-
-    def __str__(self):
-        return self.fecha_de_prestamo
-
-    class Meta:
-        verbose_name = 'Prestamo'
-        verbose_name_plural = 'Prestamos'
