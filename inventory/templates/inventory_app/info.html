@@ -47,22 +47,55 @@
       </div>
     </nav>
 
-    <br>
-    {% block content %}
-    {% for a in area %}
-    <h3>Area: {{a.nombre}}</h3><br />
-    {% for c in container %}
-    {% if a == c.area_de_origen %}
-    <h4>Container: {{c.nombre}}</h4><br />
-    {% for o in objeto %}
-    {% if c == o.container_de_origen %}
-    <a>Objeto: {{o.nombre}}</a><br /><br />
-    {% endif %}
-    {% endfor %}
-    {% endif %}
-    {% endfor %}
-    {% endfor %}
-    {% endblock %}
+    {% if lista %}
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Caracteristicas</th>
+            <th>Observaciones</th>
+            <th>Fecha de entrada</th>
+            <th>Guardado en</th>
+            <th>Habitacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for objeto in lista %}
+            <tr>
+              <td>{{objeto.id}}</td>
+              <td>{{objeto.ID_profe}}</td>
+              <td>{{objeto.nombre}}</td>
+              {% if objeto.estado == "N" %}
+                <td>Nuevo</td>
+              {%endif%}
+              {% if objeto.estado == "B" %}
+                <td>Bueno</td>
+              {%endif%}
+              {% if objeto.estado == "M" %}
+                <td>Malo</td>
+              {%endif%}
+              {% if objeto.estado == "R" %}
+                <td>Roto</td>
+              {%endif%}
+              <td>{{objeto.caracteristicas}}</td>
+              <td>{{objeto.observaciones}}</td>
+              <td>{{objeto.fecha_entrada}}</td>
+              {%if objeto.container_de_origen.ID_profe%}
+                <td>{{objeto.container_de_origen.nombre}}({{objeto.container_de_origen.ID_profe}})</td>
+              {%else%}
+                <td>{{objeto.container_de_origen.nombre}}</td>
+              {%endif%}
+              <td>{{objeto.container_de_origen.area_de_origen.nombre}}</td>
+            </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      {%endif%}
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
