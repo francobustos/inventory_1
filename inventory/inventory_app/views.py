@@ -21,7 +21,7 @@ def informacion(request):
     area = Area.objects.all()
     container = Container.objects.all()
     objeto = Objeto.objects.all()
-    return render(request, 'informacion.html',{'area':area, 'container':container, 'objeto':objeto})
+    return render(request, 'info.html',{'area':area, 'container':container, 'objeto':objeto})
 
 def logout_request(request):
     logout(request)
