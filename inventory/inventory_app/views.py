@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from inventory_app.models import *
 from django.utils import timezone
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import ContainerForm, AreaForm, ObjetoForm, LoginForms
 from django.contrib.auth.decorators import login_required
@@ -22,6 +22,11 @@ def informacion(request):
     container = Container.objects.all()
     objeto = Objeto.objects.all()
     return render(request, 'informacion.html',{'area':area, 'container':container, 'objeto':objeto})
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "sesion cerrada con exito")
+    return redirect('login')
 
 def my_login(request):
     if request.method == 'POST':
