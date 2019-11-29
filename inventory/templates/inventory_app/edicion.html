@@ -16,6 +16,13 @@
       <button type="submit">Enviar</button>
     </div>
   </form>
-</body>
-
+      </div>
+    </form>
+      <button type="button" id="myButton">Volver</button>
+  </body>
+  <script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "{%url 'home'%}";
+    };
+</script>
 </html>

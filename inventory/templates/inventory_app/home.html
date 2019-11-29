@@ -39,12 +39,14 @@
         <h3 class="empresaNav">
 
           <small class="text-muted" id="botoncitos"> Inventario de objetos</small>
+          <small id="Inventario" class="text-muted"> Inventario de objetos</small>
         </h3>
         <li class="nav-item">
           <a id="Info" class="nav-link" href="{% url 'informacion' %}">Información</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="botoncitos" href="{% url 'login' %}">Log Out</a>
+          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
       </ul>
 
