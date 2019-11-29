@@ -46,6 +46,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
+        <li class="nav-item" >
+          <a class="nav-link" href="admin/auth/">Crear Usuarios y Grupos</a>
+        </li>
       </ul>
 
     </div>
@@ -53,34 +56,19 @@
 
   <br>
   {% block content %}
-  <div id="lista">
-    {% for area in areas %}
-      <h2>Area: {{area.nombre}}</h2>
-      <a href="{% url 'editar_area' area.id %}">Editar</a><br/>
-      <a href="{% url 'eliminar_area' area.id %}" onclick="return confirmar()" >Eliminar</a><br/>
-      {% for container in containers %}
-        {% if area == container.area_de_origen %}
-          {%if container.ID_profe%}
-            <h3>Container: {{container.nombre}}({{container.ID_profe}})</h3>
-          {%else%}
-            <h3>Container: {{container.nombre}}</h3>
-          {%endif%}
-          <a href="{% url 'editar_container' container.id %}">Editar</a><br/>
-          <a href="{% url 'eliminar_container' container.id %}" onclick="return confirmar()" >Eliminar</a><br/>
-        {% for objeto in objetos %}
-          {% if container == objeto.container_de_origen %}
-            {%if objeto.ID_profe%}
-              <a>Objeto: {{objeto.nombre}}({{objeto.ID_profe}})</a>
-            {%else%}
-              <a>Objeto: {{objeto.nombre}}</a>
-            {%endif%}
-            <a href="{% url 'editar_objeto' objeto.id %}">Editar</a><br/>
-            <a href="{% url 'eliminar_objeto' objeto.id %}" onclick="return confirmar()" >Eliminar</a><br/>
-          {% endif %}
-        {% endfor %}
-        {% endif %}
-      {% endfor %}
-    {% endfor %}
+  {% for a in area %}
+  <h3>Area: {{a.nombre}}</h3><br />
+  {% for c in container %}
+  {% if a == c.area_de_origen %}
+  <h4>Container: {{c.nombre}}</h4><br />
+  {% for o in objeto %}
+  {% if c == o.container_de_origen %}
+  <a>Objeto: {{o.nombre}}</a><br /><br />
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
   {% endblock %}
 
   <!-- Optional JavaScript -->
@@ -88,16 +76,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script>
-    function confirmar()
-    {
-    	if(confirm('¿Estas seguro de eliminarlo?'))
-    		return true;
-    	else
-    		return false;
-    }
-  </script>
-
 
 </body>
 
