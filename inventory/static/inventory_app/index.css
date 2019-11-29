@@ -1,7 +1,19 @@
 .body_index {
-  background-color: rgb(31, 193, 188);
+  background-color: rgb(151, 240, 242);
   font: 87.5%/1.5em 'Open Sans', sans-serif;
   margin: 0;
+}
+
+#botoncitos2{
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+#botoncitos{
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .empresaNav {
@@ -11,11 +23,13 @@
 
 .text-muted{
   margin-left: 300px;
-
 }
 
 #Info{
   margin-left: 280px;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .navbar-nav > li{
