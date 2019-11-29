@@ -7,7 +7,12 @@
     <link rel="stylesheet" type="text/css" href="{% static './inventory_app/info.css' %}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static './inventory_app/index.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
+
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,19 +41,21 @@
 
             <small class="text-muted"> Inventario de objetos</small>
           </h3>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'informacion' %}">Información</a>
+          <li  class="nav-item">
+            <a  id= "Info1" class="nav-link" href="{% url 'informacion' %}">Información</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
           </li>
         </ul>
-
+         <input class = "form-control" id = "demo" type = "text" placeholder = "Seach here,..">       </form>
       </div>
     </nav>
 
     {% if lista %}
-      <table>
+      <table class="table table-bordered table-striped">
+    <div class="main-container">
+      <table border="1px" cellspacing="5" bordercolor="#0000FF" class="tabla" >
         <thead>
           <tr>
             <th>#</th>
@@ -62,7 +69,7 @@
             <th>Habitacion</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
           {% for objeto in lista %}
             <tr>
               <td>{{objeto.id}}</td>
@@ -93,11 +100,23 @@
           {%endfor%}
         </tbody>
       </table>
+    </div>
+
       {%endif%}
 
 
 
     <!-- Optional JavaScript -->
+    <script>
+         $(document).ready(function(){
+            $("#demo").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+               $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+            });
+         });
+      </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

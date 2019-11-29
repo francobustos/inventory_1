@@ -1,0 +1,36 @@
+#Info1{
+  margin-left: 260px;
+}
+
+.tabla {
+  border-collapse: separate;
+  margin-top: 10px;
+  border: 1px;
+  border-color: #000000;
+}
+
+
+
+table{
+  text-align: center;
+
+}
+
+th, td{
+  padding: 3px;
+}
+
+
+thead{
+  background-color: #246355;
+  border-bottom: solid 5px #0F362D;
+  color: white;
+}
+
+tr:nth-child(even){
+  background-color: #ddd;
+}
+
+tr:hover td {
+  background-color: #246355;
+}

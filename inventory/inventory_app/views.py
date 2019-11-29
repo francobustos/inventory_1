@@ -3,11 +3,10 @@ from inventory_app.models import *
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import ContainerForm, AreaForm, ObjetoForm
+from .forms import ContainerForm, AreaForm, ObjetoForm, LoginForms
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from inventory_app.forms import LoginForms
 
 
 @login_required(login_url="login")

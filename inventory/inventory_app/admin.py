@@ -5,4 +5,3 @@ from .models import *
 admin.site.register(Area)
 admin.site.register(Container)
 admin.site.register(Objeto)
-admin.site.register(Prestamo)
