@@ -45,3 +45,9 @@ table {
 th, td {
   padding: 15px;
 }
+
+
+#Editar_href, #Elimiar_href{
+	position: relative;
+  left: 1200px;
+}
