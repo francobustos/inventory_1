@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="{% static './inventory_app/index.css' %}" />
 </head>
 
-<body class="body_index">
+<body class="body_index" id="body">
 
   <!-- Index -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
@@ -23,8 +23,11 @@
           <a class="nav-link" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
+          <a id="Info"  class="nav-link" href="{% url 'informacion' %}">Información</a>
+        </li>
+        <li class="nav-item">
           <div class="dropdown">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            <button id="crear" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
               Crear
             </button>
             <div class="dropdown-menu">
@@ -36,37 +39,28 @@
             </div>
           </div>
         </li>
-        <h3 class="empresaNav">
-
-          <small id="Inventario" class="text-muted"> Inventario de objetos</small>
-        </h3>
         <li class="nav-item">
-          <a id="Info"  class="nav-link" href="{% url 'informacion' %}">Información</a>
+          <h3 id="empresaNav"class="nav-link">Inventario de objetos</h3>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+          <a id="logout" class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
         <li class="nav-item" >
-          <a class="nav-link" href="admin/auth/">Crear Usuarios y Grupos</a>
+          <a id="crear_u"class="nav-link" href="admin/auth/">Crear Usuarios y Grupos</a>
         </li>
       </ul>
 
     </div>
   </nav>
 
-<table>
-  <tr>
-    <td></td>
-  </tr>
-</table>
 
   <br>
   {% block content %}
   <div id="lista">
-    {% for area in areas %}
+		{% for area in areas %}
       <h2>Area: {{area.nombre}}</h2>
-      <a href="{% url 'editar_area' area.id %}">Editar</a><br/>
-      <a href="{% url 'eliminar_area' area.id %}" onclick="return confirmar()" >Eliminar</a><br/>
+      <a class="btn btn-primary" href="{% url 'editar_area' area.id %}" id="Editar_href" >Editar</a> <a class="btn btn-danger" href="{% url 'eliminar_area' area.id %}" onclick="return confirmar()" id="Elimiar_href">Eliminar</a><br/>
 
       {% for container in containers %}
         {% if area == container.area_de_origen %}
@@ -75,8 +69,7 @@
           {%else%}
             <h3>Container: {{container.nombre}}</h3>
           {%endif%}
-          <a href="{% url 'editar_container' container.id %}">Editar</a><br/>
-          <a href="{% url 'eliminar_container' container.id %}" onclick="return confirmar()" >Eliminar</a><br/>
+          <a class="btn btn-primary" href="{% url 'editar_container' container.id %}" id="Editar_href">Editar</a>   <a class="btn btn-danger" href="{% url 'eliminar_container' container.id %}" onclick="return confirmar()" id="Elimiar_href" >Eliminar</a><br/>
 
         {% for objeto in objetos %}
           {% if container == objeto.container_de_origen %}
@@ -85,8 +78,7 @@
             {%else%}
               <a>Objeto: {{objeto.nombre}}</a>
             {%endif%}
-            <a href="{% url 'editar_objeto' objeto.id %}">Editar</a><br/>
-            <a href="{% url 'eliminar_objeto' objeto.id %}" onclick="return confirmar()" >Eliminar</a><br/>
+            <a class="btn btn-primary" href="{% url 'editar_objeto' objeto.id %}" id="Editar_href">Editar</a> <a class="btn btn-primary" href="{% url 'eliminar_objeto' objeto.id %}" onclick="return confirmar()" id="Elimiar_href" >Eliminar</a><br/>
           {% endif %}
         {% endfor %}
         {% endif %}

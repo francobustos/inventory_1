@@ -6,7 +6,6 @@
     <title>Informacion</title>
     <link rel="stylesheet" type="text/css" href="{% static './inventory_app/info.css' %}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static './inventory_app/index.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -14,7 +13,7 @@
   </head>
 
   <body>
-    <nav id="posicion" class="navbar navbar-expand-lg navbar-dark bg-info">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,8 +23,11 @@
             <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
+            <a id="Info"  class="nav-link" href="{% url 'informacion' %}">Información</a>
+          </li>
+          <li class="nav-item">
             <div class="dropdown">
-              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+              <button id="crear" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                 Crear
               </button>
               <div class="dropdown-menu">
@@ -37,18 +39,18 @@
               </div>
             </div>
           </li>
-          <h3 class="empresaNav">
-
-            <small class="text-muted"> Inventario de objetos</small>
-          </h3>
-          <li  class="nav-item">
-            <a  id= "Info1" class="nav-link" href="{% url 'informacion' %}">Información</a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            <h3 id="empresaNav"class="nav-link">Inventario de objetos</h3>
+          </li>
+
+          <li class="nav-item">
+            <a id="logout" class="nav-link" href="{% url 'logout' %}">Log Out</a>
+          </li>
+          <li class="nav-item" >
+            <a id="crear_u"class="nav-link" href="admin/auth/">Crear Usuarios y Grupos</a>
           </li>
         </ul>
-         <input class = "form-control" id = "demo" type = "text" placeholder = "Seach here,..">       </form>
+
       </div>
     </nav>
 
