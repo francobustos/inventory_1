@@ -11,8 +11,6 @@
 </head>
 
 <body class="body_index" id="body">
-
-  <!-- Index -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -20,14 +18,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" id="botoncitos" href="{% url 'home' %}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a id="Info"  class="nav-link" href="{% url 'informacion' %}">Información</a>
+          <a class="nav-link" id="home" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
           <div class="dropdown">
-            <button id="crear" type="button" class="botoncitos2" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            <button id="crear" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
               Crear
             </button>
             <div class="dropdown-menu">
@@ -40,16 +35,16 @@
           </div>
         </li>
         <h3 class="empresaNav">
-          <small id="Inventario" class="text-muted" class="botoncitos"> Inventario de objetos</small>
+          <small id="Inventario" class="text-muted"> Inventario de objetos</small>
         </h3>
         <li class="nav-item">
           <a id="Info" class="nav-link" href="{% url 'informacion' %}">Información</a>
         </li>
         <li class="nav-item">
-          <a id="logout" class="botoncitos" class="nav-link" href="{% url 'logout' %}">Log Out</a>
+          <a id="logout" class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
-        <li class="nav-item" >
-          <a id="crear_u" class="botoncitos" class="nav-link" href="admin/auth/">Crear Usuarios y Grupos</a>
+        <li class="nav-item">
+          <a id="crear_u" class="nav-link" href="admin/auth/">Crear Usuarios y Grupos</a>
         </li>
       </ul>
     </div>
