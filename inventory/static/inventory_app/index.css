@@ -41,6 +41,8 @@ height: 100%;
 h1{
   text-align: center;
 }
+
+
 table, td, th {
   border: 1px solid #ddd;
   text-align: left;
@@ -56,14 +58,25 @@ th, td {
 }
 
 #Editar_href{
-  color
+  position: absolute;
+  left: 1050px;
 }
 
-#Editar_href, #Elimiar_href{
-  position: static;
-  left: 1200px;
+#Elimiar_href{
+	position: absolute;
+	left: 1130px;
+}
+
+#Editar_area, #Elimiar_area{
+	position: relative;
+  left:650px;
 }
 
 text-muted{
   text-align: left;
+}
+
+hr {
+  height: 2px;
+  background-color: black;
 }
