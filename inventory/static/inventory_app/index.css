@@ -71,7 +71,7 @@ table {
   width: 100%;
 }
 
-th, td {
+th, td {e
   padding: 15px;
 }
 
@@ -80,7 +80,7 @@ th, td {
   left: 1050px;
 }
 
-#Elimiar_href{
+#Eliminar_href{
 	position: absolute;
 	left: 1130px;
 }

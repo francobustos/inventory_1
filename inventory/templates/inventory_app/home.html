@@ -82,7 +82,7 @@
             {%else%}
               <a>Objeto: {{objeto.nombre}}</a>
             {%endif%}
-						<a class="btn btn-primary" href="{% url 'editar_objeto' objeto.id %}" id="Editar_href">Editar</a> <a class="btn btn-danger" href="{% url 'eliminar_objeto' objeto.id %}" onclick="return confirmar()" id="Elimiar_href" >Eliminar</a><br/><br/>
+						<a class="btn btn-primary" href="{% url 'editar_objeto' objeto.id %}" id="Eliminar_href">Editar</a> <a class="btn btn-danger" href="{% url 'eliminar_objeto' objeto.id %}" onclick="return confirmar()" id="Elimiar_href" >Eliminar</a><br/><br/>
           {% endif %}
         {% endfor %}
         {% endif %}
