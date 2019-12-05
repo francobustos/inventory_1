@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+import io
 from inventory_app.models import *
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
@@ -7,6 +8,8 @@ from .forms import ContainerForm, AreaForm, ObjetoForm, LoginForms
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from reportlab.pdfgen import canvas
+from django.http import FileResponse
 
 
 @login_required(login_url="login")
@@ -137,3 +140,45 @@ def eliminar_objeto(request, id):
 def post_list(request):
     lista = Objeto.objects.all()
     return render(request,'info.html',{'lista':lista})
+
+def pdfInfo(request, **kwargs):
+    buffer = io.BytesIO()
+    a = canvas.Canvas(buffer)
+    a.setLineWidth(.3)
+    w = 750
+    a.drawString(250, 800,"informacion")
+    objeto = Objeto.objects.all()
+    for i in objeto:
+
+        a.drawString(30, w, 'container: '+str(i.container_de_origen.nombre))
+        w -= 15
+        for i in objeto:
+            if (w <= 100):
+                a.showPage()
+                w = 750
+            a.drawString(40, w, 'ID: '+str(i.ID_profe))
+            w -= 15
+            a.drawString(40, w, 'Nombre: '+str(i.nombre))
+            w -= 15
+            estado = ''
+            if (i.estado == "N"):
+                estado = "Nuevo"
+            elif (i.estado == "B"):
+                estado = "Bueno"
+            elif (i.estado == "M"):
+                estado = "Malo"
+            elif (i.estado == "R"):
+                estado = "Roto"
+            a.drawString(50, w, 'Estado: '+estado)
+            w -= 15
+            a.drawString(40, w, 'Caracteristicas: '+str(i.caracteristicas))
+            w -= 15
+            a.drawString(40, w, 'Observaciones: '+str(i.observaciones))
+            w -= 15
+            a.drawString(40, w, 'Fecha De Entrada: '+str(i.fecha_entrada))
+            w -= 15
+    a.showPage()
+    a.save()
+
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=False, filename='objetos.pdf')
