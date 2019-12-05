@@ -148,35 +148,38 @@ def pdfInfo(request, **kwargs):
     w = 750
     a.drawString(250, 800,"informacion")
     objeto = Objeto.objects.all()
-    for i in objeto:
+    container = Container.objects.all()
+    for x in container:
 
-        a.drawString(30, w, 'container: '+str(i.container_de_origen.nombre))
+        a.drawString(30, w, 'container: '+str(x.nombre))
         w -= 15
+
         for i in objeto:
-            if (w <= 100):
-                a.showPage()
-                w = 750
-            a.drawString(40, w, 'ID: '+str(i.ID_profe))
-            w -= 15
-            a.drawString(40, w, 'Nombre: '+str(i.nombre))
-            w -= 15
-            estado = ''
-            if (i.estado == "N"):
-                estado = "Nuevo"
-            elif (i.estado == "B"):
-                estado = "Bueno"
-            elif (i.estado == "M"):
-                estado = "Malo"
-            elif (i.estado == "R"):
-                estado = "Roto"
-            a.drawString(50, w, 'Estado: '+estado)
-            w -= 15
-            a.drawString(40, w, 'Caracteristicas: '+str(i.caracteristicas))
-            w -= 15
-            a.drawString(40, w, 'Observaciones: '+str(i.observaciones))
-            w -= 15
-            a.drawString(40, w, 'Fecha De Entrada: '+str(i.fecha_entrada))
-            w -= 15
+            if (x == i.container_de_origen):
+                if (w <= 100):
+                    a.showPage()
+                    w = 750
+                a.drawString(40, w, 'ID: '+str(i.ID_profe))
+                w -= 15
+                a.drawString(40, w, 'Nombre: '+str(i.nombre))
+                w -= 15
+                estado = ''
+                if (i.estado == "N"):
+                    estado = "Nuevo"
+                elif (i.estado == "B"):
+                    estado = "Bueno"
+                elif (i.estado == "M"):
+                    estado = "Malo"
+                elif (i.estado == "R"):
+                    estado = "Roto"
+                a.drawString(50, w, 'Estado: '+estado)
+                w -= 15
+                a.drawString(40, w, 'Caracteristicas: '+str(i.caracteristicas))
+                w -= 15
+                a.drawString(40, w, 'Observaciones: '+str(i.observaciones))
+                w -= 15
+                a.drawString(40, w, 'Fecha De Entrada: '+str(i.fecha_entrada))
+                w -= 15
     a.showPage()
     a.save()
 
