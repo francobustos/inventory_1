@@ -3,6 +3,7 @@
 
     {%block content%}
     <input class = "form-control" id = "demo" type = "text" placeholder = "Search here...">
+    <a href="{% url 'pdf_informacion' %}" class="btn btn-primary">Crear Reporte</a>
     {% if lista %}
       <table class="table table-bordered table-striped">
     <div class="main-container">

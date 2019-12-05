@@ -18,4 +18,5 @@ urlpatterns = [
     path('eliminar_area/<int:id>',views.eliminar_area , name = 'eliminar_area'),
     path('eliminar_container/<int:id>',views.eliminar_container , name = 'eliminar_container'),
     path('eliminar_objeto/<int:id>',views.eliminar_objeto , name = 'eliminar_objeto'),
+    path('objetos/', views.pdfInfo, name='pdf_informacion'),
 ]
