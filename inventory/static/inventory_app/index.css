@@ -16,6 +16,10 @@ height: 100%;
   font-size: 20px;
 }
 
+#inve{
+  margin-left: 100px;
+}
+
 #logout{
   margin-left: 70px;
   font-family: inherit;
@@ -83,20 +87,16 @@ table {
   text-align: center;
 }
 
-#Editar_href{
+#Editar_href, #Editar_area{
   position: absolute;
   left: 1050px;
 }
 
-#Eliminar_href{
+#Eliminar_href, #Elimiar_area{
 	position: absolute;
 	left: 1130px;
 }
 
-#Editar_area, #Elimiar_area{
-	position: relative;
-  left:650px;
-}
 
 text-muted{
   text-align: left;
@@ -129,4 +129,23 @@ tr:nth-child(even){
 
 tr:hover td {
   background-color: #246355;
+}
+
+.area{
+  color: #2f6997;
+  font-size: 40px;
+}
+
+.containers{
+  color: #3b83bd;
+  font-size: 30px;
+}
+
+.objeto{
+  color: #67a1cf;
+  font-size: 20px;
+}
+
+.btn{
+  font-size: 14px;
 }

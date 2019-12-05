@@ -15,13 +15,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-#from django.contrib.auth import login,logout
-from .import views
 
 
 urlpatterns = [
 	path('jet/', include('jet.urls', 'jet')),
-    path("admin/.", include(inventory_app)),
+    path("", include('inventory_app.urls')),
     path('admin/', admin.site.urls),
-	#path('',login, {'template_name':'index.html'}, name = 'login')
 ]
