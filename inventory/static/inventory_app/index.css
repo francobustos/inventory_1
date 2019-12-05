@@ -87,20 +87,16 @@ table {
   text-align: center;
 }
 
-#Editar_href{
+#Editar_href, #Editar_area{
   position: absolute;
   left: 1050px;
 }
 
-#Eliminar_href{
+#Eliminar_href, #Elimiar_area{
 	position: absolute;
 	left: 1130px;
 }
 
-#Editar_area, #Elimiar_area{
-	position: relative;
-  left:650px;
-}
 
 text-muted{
   text-align: left;
