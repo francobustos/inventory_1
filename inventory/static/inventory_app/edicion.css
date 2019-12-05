@@ -1,0 +1,108 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: rgb(66, 117, 119);
+  /* background-image: url("../inventory_app/logo_grande.jpg"); */
+  background-repeat: no-repeat;
+  /* background-repeat: repeat; */
+  /* background-size: contain; */
+  /* background-position: center center; */
+}
+
+.div1 {
+  overflow-y: scroll;
+  /* #00b2ff */
+  background-color: white;
+  margin: 0 auto;
+  position: absolute;
+  z-index: 15;
+  top: 40%;
+  left: 43%;
+  margin: -100px 0 0 -150px;
+  display: block;
+  float: left;
+  height: 400px;
+  font-size: 24px;
+  line-height: 0px;
+  text-align: center;
+  width: 500px;
+  border:#63a4ff  5px solid;
+  border-radius: .5rem;
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: #1976d2;
+}
+
+label {
+  font-family: inherit;
+  font-weight: bold;
+  margin: 15px 0;
+  font-size: 20px;
+  padding: 10px;
+  width: 250px;
+  background: #63a4ff;
+  border: 1px solid #63a4ff;
+  color: black;
+  outline: none;
+}
+
+input {
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgba(20, 20, 20, .2);
+  color: s;
+  outline: none;
+}
+
+button {
+  background: #004ba0;
+  font-size: 18px;
+  color: white;
+  margin-bottom: 30px;
+  padding: 10px 50px;
+  cursor: pointer;
+  transition: .4s;
+  font-family: monospace;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 40px;
+  margin: 35px 0;
+  background: rgba(20, 20, 20, .2);
+  color: black;
+}
+
+select {
+  display: inline-block;
+  background-color: #1976d2;
+  font-weight: bold;
+  border-radius: 7px;
+  box-shadow: 5 5 6px rgb(255, 255, 255);
+  transition: all .5s ease;
+  position: relative;
+  font-size: 14px;
+  color: #ffffff;
+  height: 100%;
+  text-align: left;
+  margin: 25px 0;
+}

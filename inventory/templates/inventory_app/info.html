@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html> -->
+{% extends 'home.html'%}
+
+    {%block content%}
+    <input class = "form-control" id = "demo" type = "text" placeholder = "Search here...">
+    <a href="{% url 'pdf_informacion' %}" class="btn btn-primary">Crear Reporte</a>
+    {% if lista %}
+      <table class="table table-bordered table-striped">
+    <div class="main-container">
+      <table border="1px" cellspacing="5" bordercolor="#0000FF" class="tabla" >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Caracteristicas</th>
+            <th>Observaciones</th>
+            <th>Fecha de entrada</th>
+            <th>Guardado en</th>
+            <th>Habitacion</th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+          {% for objeto in lista %}
+            <tr>
+              <td>{{objeto.id}}</td>
+              <td>{{objeto.ID_profe}}</td>
+              <td>{{objeto.nombre}}</td>
+              {% if objeto.estado == "N" %}
+                <td>Nuevo</td>
+              {%endif%}
+              {% if objeto.estado == "B" %}
+                <td>Bueno</td>
+              {%endif%}
+              {% if objeto.estado == "M" %}
+                <td>Malo</td>
+              {%endif%}
+              {% if objeto.estado == "R" %}
+                <td>Roto</td>
+              {%endif%}
+              <td>{{objeto.caracteristicas}}</td>
+              <td>{{objeto.observaciones}}</td>
+              <td>{{objeto.fecha_entrada}}</td>
+              {%if objeto.container_de_origen.ID_profe%}
+                <td>{{objeto.container_de_origen.nombre}}({{objeto.container_de_origen.ID_profe}})</td>
+              {%else%}
+                <td>{{objeto.container_de_origen.nombre}}</td>
+              {%endif%}
+              <td>{{objeto.container_de_origen.area_de_origen.nombre}}</td>
+            </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+      {%endif%}
+
+    {% endblock content %}
+
+
+    <!-- Optional JavaScript -->
+    {%block script_apartes%}
+    <script>
+         $(document).ready(function(){
+            $("#demo").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+               $("#myTable tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+            });
+         });
+      </script>
+    {%endblock script_apartes%}
