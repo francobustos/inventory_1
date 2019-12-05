@@ -19,14 +19,13 @@ body {
 .div1 {
   overflow-y: scroll;
   /* #00b2ff */
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   margin: 0 auto;
   position: absolute;
   z-index: 15;
   top: 40%;
   left: 43%;
   margin: -100px 0 0 -150px;
-  color: #7fff0e;
   display: block;
   float: left;
   height: 400px;
@@ -34,7 +33,7 @@ body {
   line-height: 0px;
   text-align: center;
   width: 500px;
-  border: darkred 10px solid;
+  border:#63a4ff  5px solid;
   border-radius: .5rem;
 }
 
@@ -44,14 +43,9 @@ body {
   height: 12px; /* for horizontal scrollbars */
 }
 
-::-webkit-scrollbar-track
-{
-  background: rgba(255, 98, 98, 0.98);
-}
-
 ::-webkit-scrollbar-thumb
 {
-  background: rgba(255, 255, 255, 1);
+  background: #1976d2;
 }
 
 label {
@@ -61,8 +55,8 @@ label {
   font-size: 20px;
   padding: 10px;
   width: 250px;
-  background: rgba(255, 0, 0, 1);
-  border: 1px solid rgba(255, 130, 0, 1);
+  background: #63a4ff;
+  border: 1px solid #63a4ff;
   color: black;
   outline: none;
 }
@@ -71,7 +65,6 @@ input {
   font-size: 16px;
   padding: 10px;
   width: 250px;
-  border: 1px solid rgba(255, 0, 168, 1);
   border-top: none;
   border-left: none;
   border-right: none;
@@ -81,8 +74,7 @@ input {
 }
 
 button {
-  border: 1px solid rgba(207, 0, 0, 1);
-  background: rgba(20, 79, 117, 1);
+  background: #004ba0;
   font-size: 18px;
   color: white;
   margin-bottom: 30px;
@@ -96,14 +88,13 @@ textarea {
   resize: vertical;
   max-height: 40px;
   margin: 35px 0;
-  border: 1px solid rgba(255, 0, 168, 1);
   background: rgba(20, 20, 20, .2);
   color: black;
 }
 
 select {
   display: inline-block;
-  background-color: rgb(162, 55, 55);
+  background-color: #1976d2;
   font-weight: bold;
   border-radius: 7px;
   box-shadow: 5 5 6px rgb(255, 255, 255);
