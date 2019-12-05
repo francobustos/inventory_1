@@ -130,3 +130,18 @@ tr:nth-child(even){
 tr:hover td {
   background-color: #246355;
 }
+
+.area{
+  color: #2f6997;
+  font-size: 40px;
+}
+
+.containers{
+  color: #3b83bd;
+  font-size: 30px;
+}
+
+.objeto{
+  color: #67a1cf;
+  font-size: 20px;
+}

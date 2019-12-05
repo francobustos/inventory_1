@@ -5,8 +5,6 @@ from django.urls import path, include
 from django.contrib.auth.views import logout_then_login
 
 urlpatterns = [
-    path('jet/', include('jet.urls', 'jet')),
-    path("admin/",admin.site.urls),
     path("accounts/login/",views.my_login, name = "login"),
     path("", views.Home, name = "home"),
     path("logout/",logout_then_login, name = "logout"),
