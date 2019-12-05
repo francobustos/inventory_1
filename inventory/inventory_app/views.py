@@ -149,37 +149,43 @@ def pdfInfo(request, **kwargs):
     a.drawString(250, 800,"informacion")
     objeto = Objeto.objects.all()
     container = Container.objects.all()
-    for x in container:
+    area = Area.objects.all()
 
-        a.drawString(30, w, 'container: '+str(x.nombre))
+    for c in area:
+        a.drawString(30, w,' Area: '+str(c.nombre))
         w -= 15
 
-        for i in objeto:
-            if (x == i.container_de_origen):
-                if (w <= 100):
-                    a.showPage()
-                    w = 750
-                a.drawString(40, w, 'ID: '+str(i.ID_profe))
+        for x in container:
+            if (c == x.area_de_origen):
+                a.drawString(30, w, 'container: '+str(x.nombre))
                 w -= 15
-                a.drawString(40, w, 'Nombre: '+str(i.nombre))
-                w -= 15
-                estado = ''
-                if (i.estado == "N"):
-                    estado = "Nuevo"
-                elif (i.estado == "B"):
-                    estado = "Bueno"
-                elif (i.estado == "M"):
-                    estado = "Malo"
-                elif (i.estado == "R"):
-                    estado = "Roto"
-                a.drawString(50, w, 'Estado: '+estado)
-                w -= 15
-                a.drawString(40, w, 'Caracteristicas: '+str(i.caracteristicas))
-                w -= 15
-                a.drawString(40, w, 'Observaciones: '+str(i.observaciones))
-                w -= 15
-                a.drawString(40, w, 'Fecha De Entrada: '+str(i.fecha_entrada))
-                w -= 15
+
+                for i in objeto:
+                    if (x == i.container_de_origen):
+                        if (w <= 100):
+                            a.showPage()
+                            w = 750
+                        a.drawString(40, w, 'ID: '+str(i.ID_profe))
+                        w -= 15
+                        a.drawString(40, w, 'Nombre: '+str(i.nombre))
+                        w -= 15
+                        estado = ''
+                        if (i.estado == "N"):
+                            estado = "Nuevo"
+                        elif (i.estado == "B"):
+                            estado = "Bueno"
+                        elif (i.estado == "M"):
+                            estado = "Malo"
+                        elif (i.estado == "R"):
+                            estado = "Roto"
+                        a.drawString(50, w, 'Estado: '+estado)
+                        w -= 15
+                        a.drawString(40, w, 'Caracteristicas: '+str(i.caracteristicas))
+                        w -= 15
+                        a.drawString(40, w, 'Observaciones: '+str(i.observaciones))
+                        w -= 15
+                        a.drawString(40, w, 'Fecha De Entrada: '+str(i.fecha_entrada))
+                        w -= 15
     a.showPage()
     a.save()
 
